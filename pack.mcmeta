@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "pack_format": 45,
+    "supported_formats": {
+      "min_inclusive": 4,
+      "max_inclusive": 2147483647
+    },
+    "description": {
+      "text": "Arcünis pack",
+      "color": "#5600ff"
+    }
+  }
+}
