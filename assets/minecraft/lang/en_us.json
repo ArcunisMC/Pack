@@ -1,0 +1,22 @@
+{
+    "painting.arcunis.spawn.title": "Spawn",
+    "painting.arcunis.spawn.author": "meiilyx._",
+
+    "item.arcunis.music_disc_never_gonna_give_you_up": "Music Disc",
+    "item.arcunis.music_disc_never_gonna_give_you_up.desc": "Rick Astley - Never Gonna Give You Up",
+
+    "block.arcunis.banner.aromantic.white":"Aromantic Flag",
+    "block.arcunis.banner.asexual.white":"Asexual Flag",
+    "block.arcunis.banner.bisexual.white":"Bisexual Flag",
+    "block.arcunis.banner.gay_men.white":"Gay men Flag",
+    "block.arcunis.banner.genderqueer.white":"Genderqueer Flag",
+    "block.arcunis.banner.intersex.white":"Intersex Flag",
+    "block.arcunis.banner.lesbian.white":"Lesbian Flag",
+    "block.arcunis.banner.lgbtqia.white":"LGBTQIA+ Flag",
+    "block.arcunis.banner.nonbinary.white":"Nonbinary Flag",
+    "block.arcunis.banner.pansexual.white":"Pansexual Flag",
+    "block.arcunis.banner.polysexual.white":"Polysexual Flag",
+    "block.arcunis.banner.queer.white":"Queer Flag",
+    "block.arcunis.banner.rainbow.white":"Rainbow Flag",
+    "block.arcunis.banner.transgender.white":"Transgender Flag"
+}
