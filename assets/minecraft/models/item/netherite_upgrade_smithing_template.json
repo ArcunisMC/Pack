@@ -1,0 +1,15 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "minecraft:item/netherite_upgrade_smithing_template"
+    },
+        "overrides": [
+        {
+            "predicate": {
+                "custom_model_data": 1
+            },
+            "model": "arcunis:item/phantom_upgrade_smithing_template"
+        }
+    ]
+}
+  
