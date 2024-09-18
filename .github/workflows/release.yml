@@ -1,0 +1,75 @@
+name: Create Release on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Generate Version String
+        id: version
+        run: |
+          import datetime
+          import string
+          import os
+          import subprocess
+
+          # Get current year and week number
+          now = datetime.datetime.now()
+          year = str(now.year)[2:]  # Get last two digits of the year
+          week = now.isocalendar()[1]  # ISO week number
+
+          # Determine the next release suffix (a, b, c, ...)
+          releases = subprocess.run(
+              ['gh', 'release', 'list'], stdout=subprocess.PIPE
+          ).stdout.decode('utf-8').splitlines()
+
+          suffix = 'a'
+          current_week_releases = [
+              r for r in releases if f'{year}w{week:02d}' in r
+          ]
+          if current_week_releases:
+              last_release = current_week_releases[0].split()[0]
+              last_suffix = last_release[-1]
+              if last_suffix in string.ascii_lowercase:
+                  suffix = chr(ord(last_suffix) + 1)
+
+          version_string = f'{year}w{week:02d}{suffix}'
+          print(f"::set-output name=version::{version_string}")
+
+      - name: Create zip archive
+        run: |
+          zip -r pack.zip .
+
+      - name: Delete 'latest' tag if it exists
+        run: |
+          if git rev-parse latest >/dev/null 2>&1; then
+            git tag -d latest
+            git push --delete origin latest
+          fi
+
+      - name: Create a new release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pack.zip
+          tag_name: ${{ steps.version.outputs.version }}
+          name: Release ${{ steps.version.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add 'latest' tag to the new release
+        run: |
+          git tag latest
+          git push origin latest
