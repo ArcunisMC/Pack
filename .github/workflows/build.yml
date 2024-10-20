@@ -39,6 +39,8 @@ jobs:
     - name: Download Artifact
       id: download_artifact
       uses: actions/download-artifact@v3
+      with:
+        path: .
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
