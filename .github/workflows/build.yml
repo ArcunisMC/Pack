@@ -8,7 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write  # This allows writing to the repository, needed for creating releases
+      packages: write
+      
     steps:
     # Step 1: Checkout the repository
     - name: Checkout code
