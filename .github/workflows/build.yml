@@ -19,7 +19,7 @@ jobs:
 
     - name: Create Artifact
       id: create_artifact
-      run: zip -r pack.zip pack.mcmeta data assets
+      run: zip -r pack.zip .
 
     # Step 2: Upload the folder as a build artifact
     - name: Upload artifact
