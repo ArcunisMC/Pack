@@ -22,24 +22,20 @@ jobs:
         path: .
 
     - name: Create Release
-      uses: actions/github-script@v6
+      id: create_release
+      uses: actions/create-release@v1
       with:
-        script: |
-          const response = await github.repos.createRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            tag_name: `release-${Date.now()}`, // Create a unique tag name using a timestamp
-            name: `Release ${new Date().toISOString()}`, // Release name with a timestamp
-            body: 'Description of the release', // Description of the release
-            draft: false,
-            prerelease: false
-          });
-          return response.data;
+        tag_name: 'v${{ github.run_number }}'  # You can customize the tag naming
+        release_name: 'Release ${{ github.run_number }}'
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # Upload URL from the created release
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: pack.zip
         asset_name: pack.zip
         asset_content_type: application/zip
