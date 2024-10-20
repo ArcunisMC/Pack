@@ -17,13 +17,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Step 2: Upload the folder as a build artifact
-    - name: Create artifact
+    - name: Create Artifact
       id: create_artifact
+      run: zip -r pack.zip pack.mcmeta data assets
+
+    # Step 2: Upload the folder as a build artifact
+    - name: Upload artifact
+      id: upload_artifact
       uses: actions/upload-artifact@v4
       with:
         name: pack
-        path: .
+        path: ./pack.zip
 
     # - name: Create Release
     #   id: create_release
