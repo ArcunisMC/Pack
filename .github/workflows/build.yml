@@ -14,14 +14,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Step 2: Create a ZIP archive with the contents of the root directory
-    - name: Zip the contents
-      run: |
-        zip -r pack.zip . -x .git/\* .github/\*
+    # # Step 2: Create a ZIP archive with the contents of the root directory
+    # - name: Zip the contents
+    #   run: |
+    #     zip -r pack.zip . -x .git/\* .github/\*
 
     # Step 3: Upload the ZIP file as a build artifact (optional)
     - name: Upload the zip
       uses: actions/upload-artifact@v4
       with:
         name: pack
-        path: pack.zip
+        path: .
