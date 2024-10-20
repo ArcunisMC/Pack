@@ -18,7 +18,8 @@ jobs:
       uses: actions/checkout@v4
 
     # Step 2: Upload the folder as a build artifact
-    - name: Upload the zip
+    - name: Create artifact
+      id: create_artifact
       uses: actions/upload-artifact@v4
       with:
         name: pack
@@ -34,6 +35,13 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Download Artifact
+      id: download_artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: pack
+        path: ./  # Downloads to the current directory
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
