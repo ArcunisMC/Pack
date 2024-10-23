@@ -19,6 +19,8 @@
     "block.arcunis.banner.queer.white":"Queer Flag",
     "block.arcunis.banner.rainbow.white":"Rainbow Flag",
     "block.arcunis.banner.transgender.white":"Transgender Flag",
+
+    "container.repair.expensive": "",
     
     "enchantment.level.1": "I",
     "enchantment.level.2": "II",
