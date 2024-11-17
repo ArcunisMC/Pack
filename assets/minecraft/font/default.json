@@ -1,0 +1,24 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "arcunis:font/tags.png",
+            "ascent": 7,
+            "height": 7,
+            "chars": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        }
+    ]
+}
